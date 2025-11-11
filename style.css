@@ -1,0 +1,90 @@
+/* Cor de fundo da página */
+
+body {
+    background-color: #222640;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+#titulo {
+    text-align: center;
+    color: white;
+    font-family: 'Courier New', monospace;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    height: 100px;
+    width: 100px;
+    background-color: #222640;
+    border: 2px solid #84aa6d;
+    font-size: 70px;
+    transition: 0.4s;
+}
+
+.cell:hover {
+    background-color: #04aa6d;
+    color: #222640;
+}
+
+.X {
+    color: #ffff;
+    font-weight: bold;
+}
+
+.O {
+    color: #ff3700; 
+    font-weight: bold;
+}
+
+#status {
+    margin: 20px;
+    font-size: 18px;
+    text-align: center;
+    color: white;
+}
+
+#div-img {
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+#button {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    height: 30px;
+    width: 100px;
+    cursor: pointer;
+    background-color: #222640;
+    color: #ffff;
+    border: 2px solid white;   
+}
+
+#button:hover {
+    background-color: #04aa6d;
+    color: #222640;
+}
+
+#box {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+
