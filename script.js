@@ -1,17 +1,22 @@
 const board = document.getElementById('board')
 const statusText = document.getElementById('status')
+const tentativas = document.getElementById('tentativas')
 
 let jogoAtivo = true
+let jogadas = 0
 let jogadorAtual = 'X'
 let celulas = Array(9).fill(null)
 
 function reiniciarJogo() {
     // Função de iniciar jogo.
     jogoAtivo = true
+    jogadas = 0
     jogadorAtual = 'X'
+    statusText.style.color = 'blue'
     celulas = Array(9).fill(null)
     // console.log(statusText);
     statusText.textContent = `turno do jogador X`
+    tentativas.textContent = '0'
     // console.log(statusText);
     criarTabuleiro()
 }
@@ -26,8 +31,9 @@ function criarTabuleiro() {
         if (celula) {
             div.textContent = celula
             div.classList.add(celula)
-            div.classList.add(celula.toLowerCase())
+            // div.classList.add(celula.toLowerCase())
         }
+
         board.appendChild(div);
     });
 }
@@ -36,6 +42,8 @@ function clickCelula(e) {
     const index = e.target.dataset.index
     // console.log(e)
     // console.log(index)
+
+    jogadas++
 
     if (celulas[index] || !jogoAtivo) {
         return
@@ -46,14 +54,23 @@ function clickCelula(e) {
     if (verificarVitoria()) {
         // vitoria
         statusText.textContent = `O jogador ${jogadorAtual} venceu!`
+        tentativas.textContent = jogadas
         jogoAtivo = false
     } else if (!celulas.includes(null)) {
         // empate
         jogoAtivo = false
         statusText.textContent = `O jogo empatou!`
     } else {
-        jogadorAtual = jogadorAtual === 'X' ? 'O' : 'X'
-        statusText.textContent = `turno do jogador ${jogadorAtual}`
+        if (jogadorAtual === 'X') {
+            jogadorAtual = 'O'
+            statusText.style.color = 'yellow'
+        } else {
+            jogadorAtual = 'X'
+            statusText.style.color = 'blue'
+        }
+        // jogadorAtual = jogadorAtual === 'X' ? 'O' : 'X'
+        statusText.textContent = `turno do jogador ${jogadorAtual}.`
+        tentativas.textContent = jogadas
     }
 }
 
@@ -80,15 +97,17 @@ function verificarVitoria() {
         const valorC = celulas[c]
         // console.log(valorA, valorB, valorC)
         if (valorA && valorA === valorB && valorA === valorC) {
-            console.log('Vitoria!')
+            // console.log('Vitoria!')
+            destacarVitoria(combinacoes[i])
             return true
         }
-        // console.log(combinacoes[i])
-        // for(let j = 0; j < combinacoes[i].length; j++){
-        // console.log(combinacoes[i][j])
-        //}
     }
     return false
+}
+
+function destacarVitoria(combinacao) {
+    console.log(combinacao)
+    criarTabuleiro()
 }
 // Precisamos retornar combinações pela jogadas;
 

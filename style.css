@@ -34,6 +34,10 @@ body {
     transition: 0.4s;
 }
 
+.cellWonner {
+    background-color: #04aa6d;
+}
+
 .cell:hover {
     background-color: #04aa6d;
     color: #222640;
@@ -45,15 +49,22 @@ body {
 }
 
 .O {
-    color: #ff3700; 
+    color: #ff3700;
     font-weight: bold;
 }
 
-#status {
+#status,
+#tentativas {
     margin: 20px;
     font-size: 18px;
     text-align: center;
+    color: blue;
+}
+
+#tentativas {
     color: white;
+    font-size: 2rem;
+    font-weight: bold;
 }
 
 #div-img {
@@ -73,7 +84,7 @@ body {
     cursor: pointer;
     background-color: #222640;
     color: #ffff;
-    border: 2px solid white;   
+    border: 2px solid white;
 }
 
 #button:hover {
