@@ -34,10 +34,6 @@ body {
     transition: 0.4s;
 }
 
-.cellWonner {
-    background-color: #04aa6d;
-}
-
 .cell:hover {
     background-color: #04aa6d;
     color: #222640;
@@ -51,6 +47,11 @@ body {
 .O {
     color: #ff3700;
     font-weight: bold;
+}
+
+.winnerBoard {
+    background-color: #04aa6d;
+    color: gold;
 }
 
 #status,

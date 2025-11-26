@@ -21,8 +21,9 @@ function reiniciarJogo() {
     criarTabuleiro()
 }
 
-function criarTabuleiro() {
+function criarTabuleiro(win) {
     board.innerHTML = ``
+    console.log(win)
     celulas.forEach((celula, index) => {
         const div = document.createElement('div');
         div.classList.add('cell');
@@ -32,8 +33,17 @@ function criarTabuleiro() {
             div.textContent = celula
             div.classList.add(celula)
             // div.classList.add(celula.toLowerCase())
-        }
+            if (win !== undefined) {
 
+                for (let i = 0; i < win.length; i++) {
+                    if (index === win[i]){
+                        div.classList.add('winnerBoard')
+                        // console.log(win)
+                    }
+                }
+
+            }
+        }
         board.appendChild(div);
     });
 }
@@ -81,10 +91,10 @@ function verificarVitoria() {
         [3, 4, 5],
         [6, 7, 8],
         // vertical
-        [2, 5, 8],
         [0, 3, 6],
         [1, 4, 7],
-
+        [2, 5, 8],
+        // diagonal
         [0, 4, 8],
         [2, 4, 6],
     ]
@@ -98,17 +108,13 @@ function verificarVitoria() {
         // console.log(valorA, valorB, valorC)
         if (valorA && valorA === valorB && valorA === valorC) {
             // console.log('Vitoria!')
-            destacarVitoria(combinacoes[i])
+            criarTabuleiro(combinacoes[i])
             return true
         }
     }
     return false
 }
 
-function destacarVitoria(combinacao) {
-    console.log(combinacao)
-    criarTabuleiro()
-}
 // Precisamos retornar combinações pela jogadas;
 
 reiniciarJogo()
